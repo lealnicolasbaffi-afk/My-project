@@ -1,0 +1,3 @@
+toda vez que for atualizar o código, digite no terminal :
+py -m PyInstaller --onefile assistente.py 
+ .\venv\Scripts\pyinstaller.exe --onefile --console --name "Ayuka" assistente.py
