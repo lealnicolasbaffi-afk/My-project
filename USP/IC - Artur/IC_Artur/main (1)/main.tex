@@ -1,0 +1,102 @@
+\documentclass[a4paper]{article}
+
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\newcommand{\todo}[1] {{\color{red} TODO:#1}}
+
+\usepackage{tikz} % Para o fillblank
+% Para ter o tab e o fillblank
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+\node[shape=circle,draw,inner sep=0.5pt] (char) {#1};}}
+\newcommand{\circleup}[1]{\textsuperscript{\circled{#1}}}
+\newcommand{\fillblank}[2]{{\rule{#1cm}{.2mm}}\circleup{#2}}
+\usetikzlibrary{arrows}
+
+\tikzset{
+treenode/.style = {align=center, inner sep=0pt, text centered,
+font=\sffamily},
+arn_n/.style = {treenode, circle, black, draw=black, text width=2.5em},
+arn_r/.style = {treenode, circle, black, draw=black, 
+text width=2.5em},  
+arn_x/.style = {treenode, rectangle, draw=black,
+minimum width=1em, minimum height=0.5em}
+}
+
+\newif\ifgabarito% Texto para aparecer apenas no gabarito
+\gabaritofalse   % Texto para aparecer no modo prova
+
+%-------------------------------
+%\usepackage{pcsamc}
+%\usepackage{comment}
+%\includecomment{resolucao}
+%\excludecomment{gabarito}
+%\gabaritofalse
+%-------------------------------
+
+
+%Para o gabarito comentar o bloco acima e descomentar esse
+%-------------------------------
+\usepackage{comment}
+\includecomment{gabarito}
+\includecomment{resolucao}
+\usepackage{pcsamc-gabarito}
+\gabaritotrue
+%-------------------------------
+
+\newcommand{\tab}{\ \ \ \ }
+
+\usepackage{array} % Para tabular
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+% Para evitar substituição de << por aspas francesas
+\usepackage{microtype}
+\DisableLigatures[<]{encoding = T1}
+
+% Estilo PCSAMC com as personalizações
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{multicol}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{1pt}
+
+\begin{document}
+
+%##################################################################%
+\element{testes}{
+%\input{GerenciamentoProcessos}
+%\input{Threads}
+%\input{GerenciamentoMemoria}
+\input{SistemasArquivo}
+}
+
+
+%##################################################################%
+% Início da impressão de cada prova
+\onecopy{1}{
+\disciplina{PCS3746}{Sistemas Operacionais}
+\avaliacao{Exercícios Gerenciamento de Processos}
+%\cabecalho{}
+
+\noindent
+\AMCnumero{1} % para os testes começarem no 1
+\vspace{0.5cm}
+\shufflegroup{testes} % Para facilitar a revisão
+\insertgroup{testes}
+}
+\end{document}

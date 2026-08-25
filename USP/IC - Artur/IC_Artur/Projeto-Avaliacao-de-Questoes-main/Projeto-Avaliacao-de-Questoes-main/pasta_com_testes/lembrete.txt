@@ -1,0 +1,1 @@
+Colocar as questões em LATEX nesta pasta OU criar uma nova pasta, mas ao compilar é necessário mencionar ela (ler o README)

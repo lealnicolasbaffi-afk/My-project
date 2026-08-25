@@ -1,0 +1,187 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \brief    Estilo para AMC usado no PCS
+
+% \details  Este arquivo é uma personalização do estilo para o software AMC
+%           (auto-multiple choice) utilizado no PCS (Departamento de Engenharia
+%           de Computação e Sistemas Digitais) da Escola Politécnica da
+%           Universidade de São Paulo.
+% \author   Prof. Dr. Bruno de Carvalho Albertini]
+% \warning  Contact balbertini at usp dot br
+% \version  20170815
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Changelog:
+% 20150406 - Testes com o AMC, comando AMCcodeT
+% 20150512 - Primeira versão em formato TeX include
+% 20150810 - Transformação em folha de estilo
+% 20150811 - Inclusão dos comandos turma, disciplina e avaliacao
+% 20150818 - Formatação para tornar público
+% 20170815 - Colunas para mais de 5 turmas (Fábio Levy)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{pcsamc-gabarito}[2017/08/02 AMC PCS Customizations]
+
+\RequirePackage[box,insidebox,answers]{automultiplechoice}
+%% Define a geometria para folha A4
+\geometry{hmargin=1.5cm,headheight=2cm,headsep=.3cm,footskip=1cm,top=2.5cm,bottom=2cm}
+
+%% Retira o símbolo de questão com multiplas alternativas, originalmente o
+%% símbolo no naipe de paus no AMC
+\def\multiSymbole{}
+%% Traduções para Português do Brasil
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf #1} #2\hspace*{0.1em}}
+\def\AMCformQuestion#1{\vspace{\AMCformVSpace}\par{\makebox[2em][l]{#1}}}
+\def\AMCformAnswer#1{\hspace{\AMCformHSpace} #1}
+\AMCtext{corrected}{Solução}
+\AMCtext{catalog}{Catálogo}
+\AMCtext{draft}{RASCUNHO}
+\AMCtext{message}{Somente para apreciação dos professores. Não divulgue.}
+% Comentado pois já imprimimos nas questões abertas
+% \def\AMCotextReserved{\emph{Reservado ao professor(a).}}
+
+\makeatletter
+
+%% Comando de turmas novo.
+\newcommand\turmas[1]{\gdef\@turmas{#1}}
+\usepackage{pgffor}
+\usepackage{xstring}
+\newcommand{\eturmas}[1]{
+  \StrCount{#1,}{,}[\numberOfRepetitions]
+  \ifnum\numberOfRepetitions>5
+  	\begin{multicols}{5\setlength{\columnseprule}{0pt}\setlength{\columnsep}{1pt}}
+  		\begin{choices}[o]\scoring{auto=0}
+  		\foreach \n/\p in #1 {
+    		\wrongchoice[\n]{\p}\scoring{\n}
+  		}
+  		\end{choices}
+  	\end{multicols}
+  \else
+	\begin{choicescustom}[o]\scoring{auto=0}
+  		\foreach \n/\p in #1 {
+    		\wrongchoice[\n]{\p}\scoring{\n}
+  		}
+  	\end{choicescustom}
+  \fi
+}
+\def\@turmas{\@latex@warning@no@line{Comando \noexpand\turmas faltando.}}
+
+\newcommand{\espacamentoDepoisDasTurmas}[1]{
+  \StrCount{#1,}{,}[\numberOfRepetitions]
+  \newcount\colunas\colunas=5
+  \newcount\linhas\linhas=\number\numberOfRepetitions
+  \divide\linhas by\colunas
+  \ifnum\linhas>0
+    \par{\vspace{0em}}
+  \else
+    \par{\vspace{2em}}
+  \fi
+}
+
+%% Data no formato abaixo. Não utilize zeros à esquerda.
+%% \data{dia}{mês}{ano}
+%% \data{16}{2}{2015}
+\newcommand{\data}[3]{\gdef\@data{\ifnum#1<10 0\fi#1/\ifnum#2<10 0\fi#2/#3}\gdef\@semestre{#3S\ifnum#2>6 2\else 1\fi}}
+\def\@data{\@latex@warning@no@line{Comando \noexpand\data faltando.}}
+% Comentado pois o semestre é inferido da data (se estiver faltando reclamará).
+%\def\@semestre{\@latex@warning@no@line{Comando \noexpand\data faltando.}}
+
+%% Avaliação no formato (e.g.) abaixo:
+%% \avaliacao{Primeira Prova}
+\newcommand{\avaliacao}[1]{\gdef\@avaliacao{#1}}
+
+%% Doação dos caracteres para estudo de OCR
+%% Comando não ativo, não utilizar
+\newcommand{\doar}{\gdef\@doar{}}
+% %% Doação dos caracteres para estudo de OCR
+% %% Comando não ativo, não utilizar
+% \newcommand{\doar}{\@doar{Doar minhas letras manuscritas para pesquisa.}}
+
+%% Disciplina no formato:
+%% \disciplina{código}{nome}
+%% \disciplina{PCS3115}{Sistemas Digitais I}
+\newcommand{\disciplina}[2]{\gdef\@dcod{#1}\gdef\@dnome{#2}}
+
+%% AMCcodeT
+% Este comando imprime a área de marcação para o #USP e turma.
+% \warning Somente para uso interno da folha de estilo.
+\newdimen\AMCcodeHspace\AMCcodeHspace=.5em
+\newdimen\AMCcodeVspace\AMCcodeVspace=.5em
+\newdimen\AMCcodeBoxSep\AMCcodeBoxSep=.1em
+\newcommand{\AMCcodeT}[2]{{
+  \def\AMCbeginQuestion##1##2{}%
+  \setlength{\parindent}{0pt}%
+  \def\AMCbeginAnswer{\hbox\bgroup}%
+  \def\AMCendAnswer{\egroup\vspace{\AMCcodeVspace}\par}%
+  \def\AMCanswer##1##2{
+  \hbox{##1
+   \hspace{\AMCcodeBoxSep}\textbf{##2}}
+  \hspace{\AMCcodeHspace}}%
+  \AMCnobloc%
+  \begin{question}{#1.
+   }\QuestionIndicative%
+  %  \wrongchoice[0]{0}\scoring{0}%
+    \eturmas{\@turmas}
+  \end{question}%
+}}
+
+%% AMCcodeDoar
+% Este comando imprime a área de marcação para a doação dos caracteres manuscritos para pesquisa em OCR. Solicitado pelo Gomi, caso o aluno marque esta opção, aparecerá a marcação "1" na planilha de notas para esta coluna. Neste caso, envie-o o(s) PDF(s) da(s) prova(s).
+% \warning Somente para uso interno da folha de estilo.
+\newcommand{\AMCcodeDoar}[2]{{
+  \def\AMCbeginQuestion##1##2{}%
+  \setlength{\parindent}{0pt}%
+  \def\AMCbeginAnswer{\hbox\bgroup}%
+  \def\AMCendAnswer{\egroup\vspace{\AMCcodeVspace}\par}%
+  \def\AMCanswer##1##2{
+  \hbox{##1
+   \hspace{\AMCcodeBoxSep}{##2}}
+  \hspace{\AMCcodeHspace}}%
+  \AMCnobloc%
+  \begin{question}{#1.
+   }\QuestionIndicative%
+   \begin{choicescustom}[o]%
+    {\wrongchoice[ ]{Concordo em doar minhas letras manuscritas para pesquisa em OCR.}\scoring{1}}
+   \end{choicescustom}%
+  \end{question}%
+}}
+
+%% cabecalho
+% Este comando imprime o cabeçalho todo, incluindo turma e #USP
+\newcommand{\cabecalho}{
+  % Reseta o contador de figuras
+  \setcounter{figure}{0}
+  %
+  \par{\vspace{0.5cm}}
+  \noindent{\bf {\@dcod} - {\@dnome} \hfill {\@avaliacao} - {\@data}}
+  % Com espaço do semestre
+  %\noindent{\bf {\@dcod} - {\@dnome} - {\@semestre} \hfill {\@avaliacao} - {\@data}}
+  %
+  \par{\vspace{0.5cm}}
+  \begin{minipage}{5cm}
+    \AMCcode{nusp}{8}
+  \end{minipage}
+  %
+  \begin{minipage}{12cm}
+    \noindent{Utilize caneta azul ou preta para marcar as caixas e preencha a
+    caixa totalmente para correta interpretação. Exemplo: $\blacksquare$.
+    \textbf{Não use $\boxtimes$.}}
+    % Se essa opção estiver no arquivo de provas (.tex), gera campo para concordância sobre a doação dos caracteres manuscritos.
+    \ifdefined\@doar%
+      \par{\vspace{2em}}\AMCcodeDoar{doar}{1}\hspace*{\fill}%
+    \fi
+    \par{\vspace{1em}}\AMCcodeT{turma}{1}\hspace*{\fill}
+    \espacamentoDepoisDasTurmas{\@turmas}Marque as caixas ao lado para formar o seu número USP, as caixas acima para sua turma e seu nome abaixo.\hspace*{\fill}
+    \par{\vspace{1em}}
+    \hfill\namefield{\fbox{
+      \begin{minipage}{12cm}
+        Nome (completo):
+        \par{\vspace*{0.5cm}}\dotfill
+        \par{\vspace*{1mm}}
+      \end{minipage}
+    }}
+  \end{minipage}
+  \par{\vspace{0.5cm}}
+}
+\makeatother
+
+\endinput

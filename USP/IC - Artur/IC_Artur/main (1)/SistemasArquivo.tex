@@ -1,0 +1,199 @@
+{
+
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2024 – Questão 44)}}
+\begin{question}{} Um computador precisa ter seu disco atual, formatado com uma única partição, substituído por outro disco. Antes de realizar a troca, foi realizada uma análise do tamanho dos
+arquivos armazenados no disco atual, cujo resultado indicou que 98\% dos arquivos possuem tamanho
+entre 1.000 bytes e 2.030 bytes (mediana de 1.515 bytes). Assinale a alternativa que lista os
+parâmetros de formação do novo disco e que resulte no menor desperdício de espaço físico e menor
+probabilidade de fragmentação do disco.
+\begin{choices}
+\correctchoice{Tamanho de bloco = 2.048 bytes e sistema de arquivos baseado em alocação encadeada.}
+\wrongchoice{Tamanho de bloco = 1.024 bytes e sistema de arquivos baseado em alocação encadeada.}
+\wrongchoice{Tamanho de bloco = 1.024 bytes e sistema de arquivos baseado em alocação indexada.}
+\wrongchoice{Tamanho de bloco = 2.048 bytes e sistema de arquivos baseado em alocação contígua.} 
+\wrongchoice{Tamanho de bloco = 1.024 bytes e sistema de arquivos baseado em alocação contígua.}
+\end{choices}
+
+
+\ifgabarito
+{\color{red} Resposta ao recurso: MANTIDA alternativa 'D'. A questão apresenta o cenário de formatação de uma partição de disco, e solicita que “assinale a alternativa que lista os parâmetros de formação do novo disco e que resulte no menor desperdício de espaço físico e menor probabilidade de fragmentação do disco”. As opções disponíveis apresentam dois tamanhos de bloco (1024 bytes e 2048 bytes) e três métodos de alocação de espaço em disco (contígua, encadeada e indexada). O enunciado informa que 98\% dos arquivos a serem armazenados na nova partição possuem tamanho entre 1.000 bytes e 2030 bytes (mediana de 1.515 bytes). Importante ressaltar que nada é dito sobre a distribuição dos tamanhos dos arquivos. Em termos de método de alocação de espaço em disco, entre as três opções disponíveis, a literatura indica que o método que oferece a menor probabilidade de fragmentação de disco é a alocação encadeada, dada a sua flexibilidade em alocar blocos não contíguos e por não reservar espaço para tabela de índices. Desse modo, as alternativas disponíveis com esse método são as letras (A) e (D). A diferença entre essas duas alternativas está no tamanho de bloco. Em termos do tamanho de bloco, dada a ausência de informações sobre a distribuição dos tamanhos dos arquivos, nada pode ser inferido a esse respeito, além do seu valor mediano de 1.515 bytes que é informado. Neste sentido, para o tamanho de bloco de 1024 bytes (alternativa A), com base no valor mediano informado, um arquivo ocuparia dois blocos de 1024 bytes, sendo que a ocupação do segundo bloco seria parcial. Já para o tamanho de bloco de 2048 bytes (alternativa D), com base no valor mediano, um arquivo ocuparia um único bloco, também de forma parcial. O espaço não utilizado (desperdiçado) nas duas configurações de tamanho de bloco é o mesmo, 533 bytes. Portanto, em termos de desperdício, ambas as alternativas teriam o mesmo efeito, tendo como base o valor mediano informado. Contudo, em termos de fragmentação de disco, a opção (A), com dois blocos de 1024 bytes, tem uma maior probabilidade de fragmentação de disco, praticamente o dobro da opção (D), já que esses arquivos, ao serem removidos, deixariam dois blocos livres enquanto sua contraparte deixaria apenas um. Note que essa probabilidade de fragmentação de disco é acentuada pela alocação encadeada, haja vista que os dois blocos em questão não, necessariamente, estariam localizados de forma contígua. Em especial sobre o problema de fragmentação de disco, vale destacar que o enunciado não busca pela solução ideal para o problema, mas sim aquela que resulte na “menor probabilidade de fragmentação de disco”. Portanto, entre as alternativas disponíveis, a correta é a letra D.}
+\else
+\fi
+\end{question}
+}
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2019 - Questão 29)}}
+\begin{question}{} Em um sistema de arquivos, é necessário gerenciar blocos de discos que estão livres, para que possam ser alocados a arquivos e/ou diretórios de que necessitem. Analise as técnicas abaixo:
+	
+\begin{enumerate}[label=\Roman*.]
+\item Vetor de bits, no qual cada bloco é representado por um bit.
+\item Lista encadeada, na qual um ponteiro mantido em memória corresponde ao endereço do primeiro
+bloco livre, e cada bloco contém um apontador para o próximo bloco livre.
+\item Lista de contadores, em que cada elemento da lista contém um endereço de bloco e um contador
+representando o número de blocos contíguos a este que estão livres.
+\end{enumerate}
+
+Quais implementam a gerência de espaço livre em disco?
+\begin{multicols}{3}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{I, II e III.}
+\wrongchoice{Apenas I.}
+\wrongchoice{Apenas II.}
+\wrongchoice{Apenas III.}
+\wrongchoice{Apenas I e II.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2019 – Questão 50)}}
+\begin{question}{}  Uma partição de disco rígido é formatada com um sistema de arquivos com base em
+alocação encadeada, usando tabela de alocação. A formatação da partição considerou um tamanho
+de bloco (cluster) de 4096 bytes. Um programa executado nesse computador cria um arquivo nessa
+partição e grava os dados do arquivo de acordo com o trecho de código abaixo. Como resultado, o
+arquivo criado contém \underline{\hspace{1cm}} bytes e ocupa \underline{\hspace{1cm}} bytes na área de dados do sistema de arquivos.
+\begin{lstlisting}[language=C]
+...
+05 char dado;
+...
+25 for(i=0;i<1024;i++)
+27 write(fd, &dado, 1);
+28 close(fd);
+\end{lstlisting}
+
+Assinale a alternativa que preenche, correta e respectivamente, as lacunas do trecho acima.
+\begin{multicols}{3}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{1024 – 4096}
+\wrongchoice{1024 – 1024}
+\wrongchoice{1025 – 1025}
+\wrongchoice{1025 – 4096}
+\wrongchoice{4096 – 4096} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2018 - Questão 34)}}
+\begin{question}{} Quanto aos métodos de alocação de espaço em disco para arquivos, analise as afirmações abaixo e assinale V, se verdadeiras, ou F, se falsas.
+	
+\begin{itemize}[label={( )}, leftmargin=1.5cm]
+\item Na alocação contígua, a alocação de espaço em disco para novos arquivos pode ser dificultada pelo problema de fragmentação externa.
+\item A alocação interligada provê acesso eficiente tanto a arquivos de acesso sequencial quanto de acesso direto.
+\item Na alocação indexada, cada arquivo possui um bloco de índice. Para arquivos grandes, são necessários mecanismos que vinculem diferentes blocos de índices, como índices multinível, por exemplo.
+\end{itemize}
+
+A ordem correta de preenchimento dos parênteses, de cima para baixo, é:
+\begin{multicols}{5}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{V – F – V.}
+\wrongchoice{V – V – F.}
+\wrongchoice{F – V – V.}
+\wrongchoice{V – F – F.}
+\wrongchoice{F – F – V.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2017 - Questão 46)}}
+\begin{question}{} Uma partição de disco rígido é formatada com um sistema de arquivos que utiliza
+alocação encadeada baseada em tabela de alocação de arquivos (FAT). Após a formatação, a partição
+possui setores de 512 bytes e tamanho de bloco (cluster) de 2048 bytes. Ao criar um arquivo nessa
+partição, gravar 1 byte e fechá-lo, qual espaço esse arquivo ocupa na área de dados da partição?
+	
+\begin{multicols}{3}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{2048 bytes.}
+\wrongchoice{1 byte.}
+\wrongchoice{2 bytes.}
+\wrongchoice{512 bytes.}
+\wrongchoice{1 setor.}
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2016 - Questão 46})}
+\begin{question}{} Um VSNT (Veículo Submarino Não Tripulado) é usado para monitoramento de
+plataformas de petróleo marítimas. O VSNT tira uma foto a cada 1 minuto. O tamanho de cada arquivo
+de foto é padronizado em 5 kB. As fotos são armazenadas em uma partição do disco rígido do VSNT,
+a qual é formatada com sistema de arquivos FAT32 e tamanho de bloco (cluster) de 4 kB. O tempo
+de missão do VSNT é de uma hora. Após o término de cada missão, as fotos são copiadas do VSNT
+para um computador, que utiliza uma partição FAT32 formatada com clusters de 8 kB. Com base
+nesse cenário, o espaço necessário no computador para armazenar todos os arquivos do VSNT em
+uma missão é de:
+\begin{tcolorbox}[
+	colback=white,
+	colframe=black,
+	boxrule=0.8pt,
+	arc=0pt,
+	width=0.5\textwidth,
+	left=8pt, right=8pt, top=6pt, bottom=6pt
+	]
+	\noindent kB: kilobyte \\
+	1 kB = 1024 bytes
+\end{tcolorbox}
+\begin{multicols}{5}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{480 kB.}
+\wrongchoice{600 kB.}
+\wrongchoice{240 kB.}
+\wrongchoice{300 kB.}
+\wrongchoice{360 kB.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2015 - Questão 46)}}
+\begin{question}{} Considere um cenário de um sistema operacional que implementa um sistema de arquivos com método de alocação de espaço em disco baseado na alocação encadeada, a exemplo do popular sistema de arquivos FAT (file allocation table). Em um disco rígido com tamanho de setor igual a 512 bytes, criou-se uma partição e a formatou com esse sistema de arquivos usando 2048 bytes para o tamanho de blocos (clusters). Durante a escrita de dados em diferentes arquivos nessa partição, foi criado o arquivo ARQ.DAT que, após ter todos os seus dados armazenados, totalizou 1024 bytes de tamanho. Nesse cenário, o arquivo ARQ.DAT
+	
+\begin{choices}
+\correctchoice{possui tamanho que não permite que seu conteúdo esteja fragmentado no disco.}
+\wrongchoice{não possui seu conteúdo fragmentado no disco, pois o sistema de arquivos em uso não permite a fragmentação.}
+\wrongchoice{pode ter seu conteúdo fragmentado no disco, pois já existiam outros arquivos no disco durante a sua criação e gravação, e o
+sistema de arquivos em uso permite a fragmentação.}
+\wrongchoice{pode ter seu conteúdo fragmentado no disco, pois seus dados foram armazenados concomitantemente com o armazenamento
+de dados de outros arquivos, e o sistema de arquivos em uso permite a fragmentação.
+}
+\wrongchoice{pode ter seu conteúdo fragmentado no disco, pois seus dados ocupam, no mínimo, dois setores e o sistema de arquivos em uso
+permite a fragmentação.
+} 
+\end{choices}
+\end{question}
+}
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2013 - Questão 22)}}
+\begin{question}{} Sobre arquivos e a alocação contígua em disco, considere as afirmativas a seguir.
+
+\begin{enumerate}[label=\Roman*.]
+\item Exige que se armazene o número do primeiro bloco do arquivo.
+\item Fornece um desempenho excelente em operações de leitura.
+\item Melhora o desempenho de acesso aleatório aos arquivos.
+\item Minimiza a fragmentação de disco.
+\end{enumerate}
+
+Assinale a alternativa correta.
+\begin{multicols}{2}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{Somente as afirmativas I, II e III são corretas.}
+\wrongchoice{Somente as afirmativas I e II são corretas.}
+\wrongchoice{Somente as afirmativas I e IV são corretas.}
+\wrongchoice{Somente as afirmativas III e IV são corretas.}
+\wrongchoice{Somente as afirmativas II, III e IV são corretas.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}

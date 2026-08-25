@@ -1,0 +1,279 @@
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2004 - Questão 39)}}
+\begin{question}{} Em um sistema operacional, um processo pode, em um dado instante de tempo, estar em um de três estados: em execução, pronto ou bloqueado. Considere as afirmativas abaixo sobre as possíveis transições entre estes estados que um processo pode realizar.
+\begin{enumerate}[label=\Roman*.]
+\item Do estado em \emph{execução} para o estado \emph{bloqueado}
+\item Do estado em \emph{execução} para o estado \emph{pronto}
+\item Do estado \emph{pronto} para o estado em \emph{execução}
+\item Do estado \emph{pronto} para o estado \emph{bloqueado}
+\item Do estado \emph{bloqueado} para o estado em \emph{execução}
+\item Do estado \emph{bloqueado} para o estado \emph{pronto}
+\end{enumerate}
+\begin{multicols}{2}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{Somente as afirmativas I, II, III e VI são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, II e III são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, III, IV e VI são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, III, IV e V são verdadeiras.}
+\wrongchoice{Todas as afirmativas são verdadeiras.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2014 - Questão 50)}}
+\begin{question}{} Em relação ao gerenciamento de processos, atribua V (verdadeiro) ou F (falso) às afirmativas a seguir.
+\begin{enumerate}[label=(\ \ )]
+\item Na espera ocupada, o processo é transferido para estado de bloqueado até que sua fatia de tempo termine e então ele retorna para fila de prontos.
+
+\item O bloco de controle de processos (BCP -- \textit{Process Control Block}) é utilizado para armazenar informações sobre processos, e essas informações são utilizadas na troca de contexto de processos.
+
+\item \textit{Threads} apresentam menor custo de criação quando comparadas aos processos, pois compartilham alguns elementos do processo, como espaço de endereçamento.
+
+\item Um processo pode estar nos seguintes estados: pronto, aguardando execução, em execução e bloqueado.
+
+\item Um processo pode ser criado por uma chamada de sistema \texttt{fork()}, nesse caso, o processo gerado (conhecido como ``filho'') é uma cópia exata do processo original, com os mesmos valores de variáveis em memória, diferenciando-se apenas no identificador do processo.
+Assinale a alternativa que contém, de cima para baixo, a sequência correta.
+\end{enumerate}
+
+\begin{multicols}{3}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{F, V, V, F, V.}
+\wrongchoice{V, V, F, V, F.}
+\wrongchoice{V, F, V, F, F.}
+\wrongchoice{V, F, F, F, V.}
+\wrongchoice{F, F, F, V, V.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2019 - Questão 45)}}
+\begin{question}{} Considere o programa abaixo escrito em linguagem C. No instante da execução da linha 5, ter-se-á uma hierarquia composta de quantos processos e threads, respectivamente?
+\begin{lstlisting}[language=C]
+main(){
+  int i;
+
+  for(i=0;i<3;i++)
+    fork();
+
+  while(1);
+}
+\end{lstlisting}
+\begin{multicols}{5}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{8 e 8.}
+\wrongchoice{1 e 0.}
+\wrongchoice{3 e 0.}
+\wrongchoice{4 e 1.}
+\wrongchoice{7 e 7.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2022 - Questão 46)}}
+\begin{question}{} O programa (em linguagem C) abaixo executa em um sistema operacional da família UNIX. Considere que todas as rotinas invocadas no programa executam sem erro. Assinale a alternativa que indica o resultado impresso na tela pelo programa.
+\begin{lstlisting}[language=C]
+signed int i;
+int main(void){
+  if (fork() > 0)
+	i++;
+  else
+	i++;
+  i++;
+  printf("%d ", i);
+}
+\end{lstlisting}
+
+\begin{multicols}{2}
+\begin{choices}
+\correctchoice{2 2}
+\wrongchoice{1 1}
+\wrongchoice{3 3}
+\wrongchoice{4 4}
+\wrongchoice{Indeterminado Indeterminado} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2025 - Questão 42)}}
+\begin{question}{} Tipicamente, a execução de um processo em um sistema operacional de tempo compartilhado caracteriza-se pela alternância entre ciclos de execução da CPU e ciclos de espera de E/S, até o seu término. Os tempos médios dos ciclos de execução da CPU e de espera de E/S denominaremos, respectivamente, exec\_t e es\_t. Considere um conjunto de processos que seguem esse padrão de alternância entre CPU e E/S, os quais executam sob um sistema operacional com escalonamento do tipo round-robin (RR) preemptivo. Assuma que o tempo médio para realizar uma troca de contexto seja dado por switch\_t. Assinale a alternativa que melhor minimiza o tempo médio de turnaround dos processos.
+%turnaround = tempo de término − tempo de chegada
+	
+
+\begin{multicols}{2}
+\begin{choices}
+\correctchoice{(exec\_t > switch\_t) e (exec\_t < quantum).}
+\wrongchoice{(exec\_t > switch\_t) e (exec\_t > quantum).}
+\wrongchoice{(exec\_t < switch\_t) e (exec\_t < quantum).}
+\wrongchoice{(exec\_t < switch\_t) e (exec\_t > quantum).}
+\wrongchoice{(exec\_t + switch\_t) > quantum.} 
+\end{choices}
+\end{multicols}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (PCS3746 - 2025)}}
+\begin{question}{} Considere o código em Assembly abaixo que utiliza \texttt{fork} para criar dois processo. Assuma que o código compila e executa sem gerar erros ou exceções em tempo de execução.
+
+\begin{multicols}{2}\columnseprule=0.1pt
+\begin{lstlisting}[
+language={[x86masm]Assembler},
+basicstyle=\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red}
+]
+
+section .data
+char_A db 'A', 0
+char_B db 'B', 0
+
+section .text
+global _start
+
+_start:
+;Intrucoes para realizar o fork()
+mov eax, 2
+int 0x80	
+
+cmp eax, 0
+jnz B ;Se EAX for != 0, salta para B:
+jmp finalizar
+;
+;
+;
+;
+;
+;
+\end{lstlisting}
+\begin{lstlisting}[
+language={[x86masm]Assembler},
+basicstyle=\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red}
+]
+A:
+; Instrucoes para mostrar char_A
+mov ebx, 1
+mov ecx, char_A
+mov edx, 3
+mov eax, 4
+int 0x80
+
+jmp finalizar
+
+B:
+; Instrucoes para mostrar char_B
+mov ebx, 1
+mov ecx, char_B
+mov edx, 3
+mov eax, 4
+int 0x80
+
+finalizar:
+mov eax, 1
+xor ebx, ebx
+int 0x80
+\end{lstlisting}
+\end{multicols}
+
+Assinale todas as alternativas \textbf{verdadeiras}.	
+\begin{choices}
+\correctchoice{Os processo pai e filho executam o trecho de código do rótulo \texttt{finalizar}.}\scoring{b=1,e=0,v=0}
+\correctchoice{O único processo que executará o trecho de código do rótulo \texttt{B} será o processo pai.}\scoring{b=1,e=0,v=0}%Verdadeiro. O filho salta direto para finalizar e o pai executa porque está logo abaixo
+
+\wrongchoice{A execução desse código exibirá os caracteres AB ou BA dependendo do escalonamento feito pelo sistema operacional.}%F. O rótulo A nunca executará
+\wrongchoice{O processo filho executará o trecho de código do rótulo \texttt{A}.}%F O processo filho executará somente o trecho finalizar
+\wrongchoice{O processo filho executará o trecho de código do rótulo \texttt{B}.}%F mesma questão que acima
+\wrongchoice{Se o sistema operacional utilizar o algoritmo de escalonamento do tipo alternância circular (\emph{Round-Robin}), a execução do código exibirá os caracteres AB ou BA.}%F. Não importa o tipo de escalonamento, o fluxo do filho sempre irá direto para o rótulo de finalizar
+\wrongchoice{Se o sistema operacional utilizar um algoritmo de escalonamento do tipo não-preemptivo, a execução do código exibirá os caracteres AB ou BA.}%F. Não importa o tipo de escalonamento, o fluxo do filho sempre irá direto para o rótulo de finalizr 
+\end{choices}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (PCS3746 - 2025)} #2\hspace*{1em}}
+\begin{question}{}
+Assuma um cenário hipotético em que um sistema operacional \textbf{não garante} que os registradores de propósito geral são salvos e recuperados no início e término da rotina de tratamento de interrupções, respectivamente.
+%garante que as flags de estado da CPU e todos os registadores \textbf{exceto} os registradores EAX, EBX, ECX e EDX são salvos e recuperados, respectivamente, no início e término da rotina de tratamento de interrupções.
+Assinale a solução que deveria ser implementada para que o tratamento de interrupções funcione corretamente no sentido de garantir que a execução dos processos não seja afetada.
+
+\begin{choices}
+\correctchoice{Utilizar as instruções {\tt pusha} e {\tt popa} no início e fim (antes de  {\tt iret}), respectivamente, da(s) rotina(s) de tratamento de interrupções.}
+%\wrongchoice{Utilizar somente interrupções de software.}%Interrupção é interrupção, de qualquer forma vai ser chamado alguma coisa
+%\wrongchoice{Acessar o registrador de apoio e aumentar seu valor para aumentar o intervalo entre interrupções}%Falso. Isso irá retardar o problema
+\wrongchoice{Aumentar o intervalo em que as interrupções ocorrem.}
+\wrongchoice{Utilizar a instrução {\tt xchg} para garantir atomicidade entre as operações dentro da rotina de tratamento de interrupções.}
+\wrongchoice{Utilizar as instruções {\tt pushf} e {\tt pop} no início e fim (antes de  {\tt iret}), respectivamente, da(s) rotina(s) de tratamento de interrupções.}
+\wrongchoice{Utilizar as instruções  {\tt cli} e {\tt sti} para desabilitar e habilitar interrupções enquanto o tratamento de uma interrupção é executado.}
+\wrongchoice{Mover o registrador de segmento de código (\texttt{CS}) para outra posição de memória.}
+\end{choices}
+\end{question}
+}
+%
+%
+%
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (PCS3746 - 2025)} #2\hspace*{1em}}
+\begin{question}{} No exemplo visto em aula de interrupções no DoS (utilizando o DosBox), o endereço de tratamento de interrupções do tipo \texttt{int 21}\textbf{h} estava localizado na posição de memória $0\times0084$, onde os dois primeiros bytes indicavam o endereço da rotina e os dois últimos bytes o segmento de código. 
+%$0\times0084$  = $0\times21$ * $0\times4$
+Suponha que um sistema operacional implementará uma interrupção denominada \texttt{int 4}\textbf{h}. Seguindo o mesmo raciocínio adotado para a \texttt{int 21}\textbf{h}, para que o sistema operacional saiba quais instruções executar ao tratar uma interrupção do tipo \texttt{int 4}\textbf{h}, em qual posição de memória ser armazenado o endereço da rotina que trata a interrupção \texttt{int 4h}? Observação importante: nas alternativas desta questão ignore aspectos relacionados ao segmento de código (\texttt{CS}) e o formato de armazenamento \emph{little-endian}.
+%Em qual posição de memória deve ser gravado o endereço da rotina que será executada quando ocorrer a interrupção \texttt{int 4}?
+
+\begin{multicols}{5}\columnseprule=0.1pt
+\begin{choices}
+\correctchoice{$0\times0010$}\scoring{b=1,e=0,v=0}
+\wrongchoice{$0\times0016$}
+\wrongchoice{$0\times0000$}
+\wrongchoice{$0\times 0084$}
+\wrongchoice{$0\times0085$}
+\end{choices}
+\end{multicols}
+
+Considere a representação conceitual de endereço de memória $\times$ conteúdo (instrução) abaixo. Nesta representação, todos os endereços estão em \textbf{hexadecimal} (o prefixo $0\times$ foi omitido por simplicidade).
+\begin{center}
+{\ttfamily
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|l|c|c|}
+\cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14}
+0106 & pusha &  & 010C & pusha &  & 0112 & pusha &  & 0118 & pusha &  & 011E & pusha \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+0107 & pushf &  & 010D & pushf &  & 0113 & pushf &  & 0119 & pushf &  & 011F & pushf \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+0108 & add esp, 8 &  & 010E & add esp, 4 &  & 0114 & sub esp, 8 &  & 011A & pop rax &  & 0120 & pop eax \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+0109 & add esp, 2 &  & 010F & nop &  & 0115 & sub esp, 2 &  & 011B & nop &  & 0121 & pop ebx \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+010A & popa &  & 0110 & popa &  & 0116 & popa &  & 011C & popa &  & 0122 & nop \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+010B & iret &  & 0111 & iret &  & 0117 & iret &  & 011D & iret &  & 0123 & iret \\ \cline{1-2} \cline{4-5} \cline{7-8} \cline{10-11} \cline{13-14} 
+\end{tabular}%
+}
+\end{center}
+
+A partir dessa memória e considerando uma \textbf{arquitetura de 32 bits}, qual o conteúdo deve ser colocado no endereço da \texttt{int 4}\textbf{h} (respondido na questão anterior) para que a rotina de tratamento desta interrupção tenha o seguinte comportamento: salvar registradores de propósito geral, salvar as flags de estado da CPU e recuperar o conteúdo dos registradores de propósito geral antes de retornar da interrupção.
+%realize as seguintes operações, nesta ordem: (i) desabilitar interrupções, (ii) salvar registradores de propósito geral, (iii) empilhar o estado das flags de CPU, (iv) recuperar o conteúdo dos registradores de propósito geral, (v) habilitar interrupções e (vi) retornar da interrupção.
+\begin{multicols}{5}
+\begin{choices}
+\correctchoice{$0\times010C$}
+\wrongchoice{$0\times0106$}
+\wrongchoice{$0\times0112$}
+\wrongchoice{$0\times0118$}
+\wrongchoice{$0\times011E$}
+\end{choices}
+\end{multicols}
+\end{question}
+}
