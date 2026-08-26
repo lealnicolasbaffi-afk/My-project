@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.25)  25 AUG 2026 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.25)  25 AUG 2026 16:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/nicolas/Eu/USP/IC - Artur/IC_Artur/main (1)/main.tex"
-(/home/nicolas/Eu/USP/IC - Artur/IC_Artur/main (1)/main.tex
+**"/home/nicolas/Eu/IC - Artur/main/main.tex"
+(/home/nicolas/Eu/IC - Artur/main/main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -1215,12 +1215,12 @@ L3 programming layer <2024-01-22>
  ) 
 Here is how much of TeX's memory you used:
  29680 strings out of 474222
- 604708 string characters out of 5748733
+ 604657 string characters out of 5748733
  1967975 words of memory out of 5000000
  51351 multiletter control sequences out of 15000+600000
  583241 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,11n,99p,2917b,1336s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,11n,99p,2900b,1336s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb>
 Output written on main.pdf (4 pages, 101724 bytes).
 PDF statistics:

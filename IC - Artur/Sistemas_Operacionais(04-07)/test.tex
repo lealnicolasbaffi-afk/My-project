@@ -1,0 +1,302 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[box]{automultiplechoice}
+
+% Configuração básica para exibição de códigos
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true
+}
+
+\begin{document}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2004 - Questão 26)}}
+\begin{question}{} Em sistemas de memória virtual de paginação sob demanda, qual seria o critério ideal para substituição de páginas?
+\begin{choices}
+\wrongchoice{retirar a página que acabou de ser referenciada}
+\correctchoice{retirar a página que será necessária no futuro mais distante}
+\wrongchoice{retirar a página que está há mais tempo na memória}
+\wrongchoice{retirar a página que foi referenciada menos vezes}
+\wrongchoice{retirar a página que está há mais tempo sem ser utilizada} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2004 - Questão 27)}}
+\begin{question}{} 27. Considere o seguinte programa com dois processos concorrentes. O escalonador poderá
+alternar entre um e outro, isto é, eles poderão ser intercalados durante sua execução.
+As variáveis x e y são compartilhadas pelos dois processos e inicializadas antes de sua
+execução.
+\begin{lstlisting}[language=C]
+programa P
+int x = 0;
+int y = 0;
+processo A {
+  while (x == 0);
+  print("a");
+  y = 1;
+  y = 0;
+  print("d");
+  y = 1;
+}
+processo B {
+  print("b");
+  x = 1;
+  while (y == 0);
+  print("c");
+}
+}
+\end{lstlisting}
+as possíveis saídas são:
+\begin{choices}
+\wrongchoice{adbc ou bcad}
+\correctchoice{badc ou bacd}
+\wrongchoice{abdc ou abcd}
+\wrongchoice{dbca ou dcab}
+\wrongchoice{Nenhuma das opções anteriores.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2004 - Questão 39)}}
+\begin{question}{}Em um sistema operacional, um processo pode, em um dado instante de tempo, estar
+em um de três estados: em execução, pronto ou bloqueado. Considere as afirmativas abaixo sobre as possiveis transições entre estes estados que um processo pode realizar.
+\begin{enumerate}[label=\Roman*.]
+\item Do estado em \emph{execução} para o estado \emph{bloqueado}
+\item Do estado em \emph{execução} para o estado \emph{pronto}
+\item Do estado \emph{pronto} para o estado em \emph{execução}
+\item Do estado \emph{pronto} para o estado \emph{bloqueado}
+\item Do estado \emph{bloqueado} para o estado em \emph{execução}
+\item Do estado \emph{bloqueado} para o estado \emph{pronto}
+\end{enumerate}
+\begin{choices}
+\correctchoice{Somente as afirmativas I, II, III e VI são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, II e III são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, III, IV e VI são verdadeiras.}
+\wrongchoice{Somente as afirmativas I, III, IV e V são verdadeiras.}
+\wrongchoice{Todas as afirmativas são verdadeiras.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2005 - Questão 36)}}
+\begin{question}{} Quatro tarefas, A, B, C e D, estão prontas para serem executadas num único proces-
+sador. Seus tempos de execução esperados são 9, 6, 3 e 5 segundos respectivamente. Em qual ordem eles devem ser executados para diminuir o tempo médio de resposta?
+\begin{choices}
+\correctchoice{C, D, B, A}
+\wrongchoice{A, B, D, C}
+\wrongchoice{C, B, D, A}
+\wrongchoice{A, C, D, B}
+\wrongchoice{O tempo médio de resposta independe da ordem.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2005 - Questão 37)}}
+\begin{question}{} Qual das alternativas a seguir melhor define uma Região Critica em Sistemas Operacionais?
+\begin{choices}
+\correctchoice{Um trecho de programa onde existe o compartilhamento de algum recurso que
+não permite o acesso concomitante por mais de um programa.}
+\wrongchoice{Um trecho de programa que deve ser executado em paralelo com a Região Critica
+de outro programa.}
+\wrongchoice{Um trecho de programa cujas instruções podem ser executadas em paralelo e em
+qualquer ordem.}
+\wrongchoice{Um trecho de programa onde existe algum recurso cujo acesso é dado por uma prioridade.}
+\wrongchoice{Um trecho de
+programa onde existe algum recurso a que somente o sistema operacional pode
+ter acesso.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2006 - Questão 32)}}
+\begin{question}{}Qual dos seguintes mecanismos é o menos recomendado para se implementar
+regiões criticas em sistemas operacionais?
+\begin{choices}
+\correctchoice{Espera ocupada}
+\wrongchoice{Semáforo}
+\wrongchoice{Troca de mensagens}
+\wrongchoice{Monitores}
+\wrongchoice{Variáveis de condição} 
+\end{choices}
+\end{question}
+}
+
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2006 - Questão 68)}}
+\begin{question}{}A comunicação entre processos em um sistema distribuido pode ser realizada por
+um mecanismo conhecido como RPC - chamada de procedimento remoto. Sobre este
+mecanismo, assinale a opção correta abaixo:
+\begin{choices}
+\correctchoice{Os stubs cliente e servidor são responsáveis pela conversão de formato dos parâmetros
+de entrada e saida, caso haja necessidade.}
+\wrongchoice{Processos comunicantes compartilham o mesmo espaço de endereçamento.}
+\wrongchoice{A geração dos stubs é comumente realizada por compilação a partir de uma es-
+pecificação de interface realizada em uma linguagem de execução de interface
+(IEL).}
+\wrongchoice{O mecanismo faz uso de uma porta fixa, de número 8080, para comunicar difer-
+entes processos e serviços entre computadores de um sistema distribuido.}
+\wrongchoice{A falha de um cliente RPC gera uma chamada dita orfã no servidor que neste caso
+repassa sempre os resultados do procedimento remoto para um proxy de retorno
+especificado na chamada} 
+\end{choices}
+\end{question}
+}
+
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2006 - Questão 69)}}
+\begin{question}{}Sobre algoritmos de exclusão mútua em sistemas distribuidos é correto afirmar
+que:
+\begin{choices}
+\correctchoice{A maioria simples de permissões dos participantes para entrada em região critica
+é suficiente para garantir a exclusão mútua no algoritmo distribuido.}
+\wrongchoice{O algoritmo centralizado tem como principal desvantagem o alto número de troca
+de mensagens.}
+\wrongchoice{O algoritmo distribuido é totalmente independente da ordem dos eventos do sis-
+tema distribuido.}
+\wrongchoice{No algoritmo do token , a exclusão mútua é garantida por uma concessão de
+bloqueio fornecida pelo gerente que mantém uma lista de tokens.}
+\wrongchoice{Três mensagens são suficientes para fechar o ciclo de concessão, liberação e nova
+concessão de acesso no algoritmo do token.} 
+\end{choices}
+\end{question}
+}
+
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2006 - Questão 70)}}
+\begin{question}{}Um sistema distribuido pode manter diferentes cópias de um mesmo item de dado
+a fim de melhorar o desempenho de leitura e aumentar a disponibilidade de acesso. A
+modificação deste item de dado é realizada de acordo com protocolos de consistência
+de cópias. Assinale a alternativa correta sobre esses protocolos.
+\begin{choices}
+\correctchoice{No protocolo de replicação ativa, todas as réplicas são atualizadas através de uma
+única operação de escrita realizada por um mecanismo de multicast totalmente
+ordenado.}
+\wrongchoice{O protocolo baseado em cópia primária permite sempre a atualização da cópia
+mais próxima e difunde o novo valor via unicast para todos os nós que mantém
+uma outra cópia.}
+\wrongchoice{A atualização de todas as cópias, no protocolo baseado em cópia primária, é
+realizada através de um processo sincrono, onde o cliente é liberado para continuar
+o fluxo de execução imediatamente após ter solicitado a atualização da cópia
+primária.}
+\wrongchoice{Nos protocolos baseados em quorum, os conflitos leitura-escrita e escrita-escrita
+são evitados por autorizações de bloqueio (lock) emitidas por um coordenador
+central ou sequenciador.}
+\wrongchoice{Protocolos baseados em coerência de cache são mecanismos de consistência de
+cópias que repassam a responsabilidade de manter essa consistência para os servi-
+dores que detém cópias.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2007 - Questão 35)}}
+\begin{question}{}Analise as seguintes afirmativas e assinale a alternativa INCORRETA.
+\begin{choices}
+\correctchoice{O escalonamento de processos por prioridades utiliza múltiplas filas e garante que
+todos os processos recebam sua fatia de tempo.}
+\wrongchoice{O acesso a setores localizados em seqüência em uma mesma trilha de um disco
+é mais rápido do que acessar o mesmo número de setores em trilhas diferentes,
+devido ao menor número tanto de deslocamentos do cabeçote quanto de rotações
+no disco.}
+\wrongchoice{Na paginação por demanda, não é necessário que o processo inteiro se encontre
+em memória para execução.}
+\wrongchoice{O escalonamento de operações de entrada e saida em um disco rigido pode ser
+utilizado para aumentar o desempenho. Porém, algoritmos como o SSTF (Shortest
+Seek Time First) podem fazer com que requisições esperem indefinidamente.}
+\wrongchoice{O surgimento do conceito de interrupções, juntamente com dispositivos de acesso
+não-seqüencial, foi primordial para a evolução que levou aos sistemas multipro-
+gramados.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2007 - Questão 68)}}
+\begin{question}{}Analise as seguintes afirmativas e assinale a alternativa INCORRETA.
+\begin{enumerate}[label=\Roman*.]
+\item Um “Servidor de Arquivos com Estado”, em um SAD, mantém todo seu estado
+no caso de uma falha, garantindo a recuperação do mesmo sem a necessidade de
+diálogo com os clientes.
+\item II. Na gerência de cache em um SAD, uma das politicas utilizadas é a write-
+through. O inconveniente dessa politica, comparada com outras, é a pouca confi-
+abilidade no caso de falhas no cliente.
+\item O uso de replicação em um SAD ao mesmo tempo que provê aumento na confia-
+bilidade, também introduz um gargalo em termos de desempenho.
+\end{enumerate}
+A esse respeito, pode-se afirmar que
+\begin{choices}
+\correctchoice{nenhuma das afirmativas está correta.}
+\wrongchoice{somente a afirmativa I está correta.}
+\wrongchoice{somente a afirmativa II está correta.}
+\wrongchoice{somente a afirmativa III está correta.}
+\wrongchoice{somente as afirmativas I e III estão corretas.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2007 - Questão 69)}}
+\begin{question}{}Analise as seguintes afirmativas concernentes a questões de projeto de sistemas
+distribuidos.
+\begin{enumerate}[label=\Roman*.]
+\item Um sistema distribuido tolerante a falhas deve continuar operando na presença
+de problemas, podendo ocorrer uma degradação tanto no seu desempenho, como
+nas suas funcionalidades.
+\item No que diz respeito à escalabilidade, o projeto de um sistema distribuido deve
+prever que a demanda nos serviços em qualquer dos equipamentos seja limitada
+por uma constante dependente do número de nodos envolvidos.
+\item Em um sistema distribuido transparente quanto à concorrência, a informação de
+quantos usuários estão empregando determinado serviço deve ser omitida.
+\end{enumerate}
+A análise permite concluir que
+\begin{choices}
+\correctchoice{somente a afirmativa II está incorreta.}
+\wrongchoice{somente a afirmativa I está incorreta.}
+\wrongchoice{somente a afirmativa III está incorreta.}
+\wrongchoice{somente as afirmativas I e III estão incorretas.}
+\wrongchoice{todas as afirmativas estão incorretas.} 
+\end{choices}
+\end{question}
+}
+
+{
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf (POSCOMP 2007 - Questão 70)}}
+\begin{question}{}Em relação aos sistemas distribuidos, analise as seguintes afirmativas.
+\begin{enumerate}[label=\Roman*.]
+\item Um sistema assincrono apresenta medida de tempo global.
+\item A passagem de mensagens é o instrumento empregado para efetuar a comunica-
+ção entre os processos de um sistema assincrono.
+\item É possivel simular um computador paralelo de memória compartilhada usando-se
+um sistema distribuido.
+\item Quando um determinado elemento de um sistema distribuido efetua a difusão
+de uma mensagem por meio de um multicast, todos os elementos do sistema
+distribuido recebem a mensagem.
+\end{enumerate}
+A análise permite concluir que
+\begin{choices}
+\correctchoice{somente as afirmativas II e III estão corretas.}
+\wrongchoice{somente a afirmativa IV está correta.}
+\wrongchoice{somente as afirmativas I e II estão corretas.}
+\wrongchoice{somente as afirmativas I e III estão corretas.}
+\wrongchoice{somente as afirmativas I e IV estão corretas.} 
+\end{choices}
+\end{question}
+}
+
+\end{document}

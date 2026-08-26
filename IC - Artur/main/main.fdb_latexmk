@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1787677711.19746 "/home/nicolas/Eu/USP/IC - Artur/IC_Artur/main (1)/main.tex" "main.pdf" "main" 1787677712.33271 0
+["pdflatex"] 1787684541.78367 "/home/nicolas/Eu/IC - Artur/main/main.tex" "main.pdf" "main" 1787684542.86317 0
   "/etc/texmf/web2c/texmf.cnf" 1787677488.26089 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/nicolas/Eu/USP/IC - Artur/IC_Artur/main (1)/main.tex" 1784121732 2811 ae6dffd276ba90d1ec13066055e175ed ""
+  "/home/nicolas/Eu/IC - Artur/main/main.tex" 1784121732 2811 ae6dffd276ba90d1ec13066055e175ed ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -205,7 +205,7 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1787677658 8213777 14b133672c4b681c4a57319b114218c5 ""
   "SistemasArquivo.tex" 1784121732 11896 78ab6888f3489f2a5447ceeb1513855d ""
   "automultiplechoice.sty" 1784121732 64397 4659fc9eb2f4d2b74b438728aca5b8ba ""
-  "main.aux" 1787677712.21113 134 f910a57e1ede0f3e9741eff118ae8a2a "pdflatex"
+  "main.aux" 1787684542.75415 134 f910a57e1ede0f3e9741eff118ae8a2a "pdflatex"
   "main.tex" 1784121732 2811 ae6dffd276ba90d1ec13066055e175ed ""
   "pcsamc-gabarito.sty" 1784121732 6880 c7f78b1820b4e033c5da6fb6d48c1cdf ""
   (generated)
